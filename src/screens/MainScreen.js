@@ -1,36 +1,48 @@
 import React from 'react';
-import {SafeAreaView, Text, TouchableOpacity} from 'react-native';
-import {connect} from 'react-redux';
+import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 
-const mapStateToProps = state => {
+const mapStateToProps = state =>
+{
   return {
     notes: state.app_reducer.notes,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch =>
+{
   return {};
 };
 
-class MainScreen extends React.Component {
-  constructor (props) {
-    super (props);
+class MainScreen extends React.Component
+{
+  constructor ( props )
+  {
+    super( props );
   }
 
-  render () {
+  render ()
+  {
     return (
       <SafeAreaView>
         <Text>MainScreen</Text>
         <TouchableOpacity
-          onPress={() => {
-            this.props.navigation.navigate ('Note');
-          }}
+          onPress={ () =>
+          {
+            this.props.navigation.navigate( 'Note' );
+          } }
         >
           <Text>노트 추가</Text>
+          {/* { this.props.notes.map( ( note, index ) =>
+          {
+            return <View key={ `${ note.title }:::${ index }` }>
+              <Text>{ note.title }</Text>
+            </View>
+          } ) } */}
         </TouchableOpacity>
       </SafeAreaView>
     );
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps) (MainScreen);
+export default connect( mapStateToProps, mapDispatchToProps )( MainScreen );
